@@ -1,6 +1,8 @@
 torch>=2.0
-torchvision
+torchvision>=0.15
 numpy
 scikit-learn
 pillow
 datasets
+matplotlib
+tqdm

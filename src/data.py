@@ -1,14 +1,12 @@
 """Data layer (no torch needed): download the cats, build train/val/test splits, decode images.
 
 Dataset: Oxford-IIIT Pet, cats only (12 breeds), downloaded from the Hugging Face mirror
-`timm/oxford-iiit-pet` (needs `pip install datasets`) into data/oxford-iiit-pet/ as
-    images/<image_id>.jpg
-    annotations/trainval.txt, annotations/test.txt     (one line per cat: "<id> <class> 1 <breed>")
+`timm/oxford-iiit-pet` (needs `pip install datasets`)
 
-Splits: official `trainval` -> stratified 80/20 train/val (fixed seed). Official `test` is only
+Splits: stratified 80/20 train/val (fixed seed). Official `test` is only
 used by evaluate.py. A check asserts that train, val and test share no image.
 
-Health check:  python -m src.data
+Run: python -m src.data
 """
 from __future__ import annotations
 
@@ -43,7 +41,7 @@ def set_seed(seed: int = 42):
     torch.backends.cudnn.benchmark = False
 
 
-# ---------------------------------------------------------------- download + annotations
+# download + annotations
 def download_from_hf(base: Path):
     """Write the cat images and the two annotation files from Hugging Face into `base`."""
     try:
@@ -108,7 +106,7 @@ def ensure_dataset(root="data", download=True) -> Path:
     return base
 
 
-# ---------------------------------------------------------------- splits
+# splits
 def get_splits(root="data", val_frac=0.2, seed=42, download=True):
     """Return (train, val, test): lists of (image_path, label), in a deterministic order."""
     base = ensure_dataset(root, download)
@@ -133,7 +131,7 @@ def class_counts(items):
     return np.bincount([y for _, y in items], minlength=len(CAT_BREEDS))
 
 
-# ---------------------------------------------------------------- decoding
+# decoding
 def resize_square(img: Image.Image, size: int) -> Image.Image:
     """The ONE resize used for training, evaluation and prediction (so there is no train/test skew)."""
     return img.convert("RGB").resize((size, size), RESAMPLE)

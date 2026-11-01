@@ -7,7 +7,7 @@
     block4  [conv3x3 -> BatchNorm -> ReLU] x2 128 -> 256  then max-pool       -> 256 x 8 x 8
     global average pooling -> Dropout -> Linear(256 -> 12)
 
-Print the shapes:  python -m src.model
+Run:  python -m src.model
 """
 from __future__ import annotations
 

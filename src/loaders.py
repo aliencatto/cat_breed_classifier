@@ -1,7 +1,5 @@
 """PyTorch Dataset + DataLoaders on top of src/data.py.
-
-All images are decoded once into RAM, so there are no worker processes (num_workers=0 is the most
-stable choice on Colab / Windows). Augmentation is applied to the TRAIN set only.
+All images are decoded once into RAM. Augmentation is applied to the TRAIN set only.
 """
 from __future__ import annotations
 

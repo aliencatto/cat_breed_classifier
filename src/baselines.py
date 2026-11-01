@@ -6,7 +6,7 @@
 No test leakage: the regularisation strength C is chosen on the VALIDATION set; the test set is
 scored once, with the chosen C.
 
-    python -m src.baselines        ->  outputs/baselines.json
+Run: python -m src.baselines  keep in (outputs/baselines.json)
 """
 from __future__ import annotations
 
