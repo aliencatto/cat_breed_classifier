@@ -6,10 +6,10 @@ regularisation, loss curves, a confusion matrix, one-shot test evaluation and an
 
 ## Rubric checklist
  - [x] Real dataset, real model. A public dataset (cited) and a model you defined and trained — not a pre-trained model called as-is.
- - [ ] Honest train / val / test discipline. A clean 3-way split; the test set was touched exactly once, at the end. No hyperparameter was chosen by looking at test.
- - [ ] A baseline, beaten. You state a trivial baseline (majority-class / mean / linear) and your model beats it on the held-out test set.
+ - [x] Honest train / val / test discipline. A clean 3-way split; the test set was touched exactly once, at the end. No hyperparameter was chosen by looking at test.
+ - [x] A baseline, beaten. You state a trivial baseline (majority-class / mean / linear) and your model beats it on the held-out test set.
  - [x] At least one form of regularization (dropout, weight decay, augmentation, early stopping) — and you can say why.
- - [ ] Loss curves + a confusion matrix / metric. Train-vs-val curves you can read, plus a confusion matrix (or per-class metric / generated samples) — not just one accuracy number.
+ - [x] Loss curves + a confusion matrix / metric. Train-vs-val curves you can read, plus a confusion matrix (or per-class metric / generated samples) — not just one accuracy number.
  - [x] A fixed seed so your numbers reproduce.
  - [ ] A short written report (the template below), including one honest failure case.
 
@@ -36,6 +36,7 @@ python -m src.model
 ```
 
 ## Train the Model
+Executes model training under different configuration settings
 ```powershell
 python -m src.train --out outputs/cnn # baseline model (augmentation on)
 ```
@@ -45,12 +46,28 @@ python -m src.train --no_aug --out outputs/cnn_noaug # experiment 1: no augmenta
 ```powershell
 python -m src.train --dropout 0.5 --out outputs/cnn_dropout05 # experiment 2: more dropout
 ```
-summarize all runs in to table (validation numbers)
+Summarize all runs in to [validation table](outputs/results.md).
 ```powershell
 python -m src.summarize # keep in (outputs/results.md)
 ```
 
+##  Evaluate
+One-shot test evaluation loads the saved model checkpoint (best.pt) and evaluates it against the held-out test set, run only **ONCE**.  
+You can choose the performing run based from [here](outputs/results.md).  
+- if you choose **cnn**, run only this **once**.
+```powershell
+python -m src.evaluate --run outputs/cnn
+```
+- if you choose **cnn_dropout05**, run only this **once**.
+```powershell
+python -m src.evaluate --run outputs/cnn_dropout05
+```
+- if you choose **cnn_noaug**, run only this **once**.
+```powershell
+python -m src.evaluate --run outputs/cnn_noaug
+```
+
 ## References
-- Oxford-IIIT Pet: https://www.robots.ox.ac.uk/~vgg/data/pets/ (CC BY-SA 4.0)  
-- Hugging Face mirror timm/oxford-iiit-pet: https://huggingface.co/datasets/timm/oxford-iiit-pet
-- cat photo: https://www.pinterest.com/pin/642959284345302529/
+- [Oxford-IIIT Pet](https://www.robots.ox.ac.uk/~vgg/data/pets/) (CC BY-SA 4.0)
+- [Hugging Face mirror timm/oxford-iiit-pet](https://huggingface.co/datasets/timm/oxford-iiit-pet)
+- [cat.jpg](https://www.pinterest.com/pin/642959284345302529/)

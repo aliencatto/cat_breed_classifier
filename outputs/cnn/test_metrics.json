@@ -1,0 +1,55 @@
+{
+  "n_test": 1183,
+  "test_acc": 0.5088757396449705,
+  "test_acc_95ci": [
+    0.48038752281166824,
+    0.5373639564782726
+  ],
+  "test_macro_f1": 0.4979434249193096,
+  "test_top3_acc": 0.8140321217244294,
+  "test_loss": 1.4050488471984863,
+  "majority_class_acc": 0.08453085376162299,
+  "per_breed_recall": {
+    "Abyssinian": 0.5102040816326531,
+    "Bengal": 0.66,
+    "Birman": 0.36,
+    "Bombay": 0.8522727272727273,
+    "British Shorthair": 0.26,
+    "Egyptian Mau": 0.7216494845360825,
+    "Maine Coon": 0.22,
+    "Persian": 0.45,
+    "Ragdoll": 0.39,
+    "Russian Blue": 0.52,
+    "Siamese": 0.54,
+    "Sphynx": 0.67
+  },
+  "top_confusions": [
+    {
+      "count": 46,
+      "true": "British Shorthair",
+      "predicted": "Russian Blue"
+    },
+    {
+      "count": 32,
+      "true": "Birman",
+      "predicted": "Siamese"
+    },
+    {
+      "count": 21,
+      "true": "Birman",
+      "predicted": "Ragdoll"
+    },
+    {
+      "count": 17,
+      "true": "Russian Blue",
+      "predicted": "British Shorthair"
+    },
+    {
+      "count": 17,
+      "true": "Persian",
+      "predicted": "Maine Coon"
+    }
+  ],
+  "checkpoint_epoch": 51,
+  "val_acc_of_checkpoint": 0.5294117647058824
+}

@@ -27,11 +27,13 @@ SIZE = 32  # images are shrunk to 32x32 -> 3072 features
 
 
 def scores(y_true, y_pred):
+    """score"""
     return {"test_acc": float(accuracy_score(y_true, y_pred)),
             "test_macro_f1": float(f1_score(y_true, y_pred, average="macro", zero_division=0))}
 
 
 def main():
+    """main"""
     ap = argparse.ArgumentParser(description="Majority-class and logistic-regression baselines")
     ap.add_argument("--data_root", default="data")
     ap.add_argument("--out", default="outputs/baselines.json")
@@ -63,7 +65,7 @@ def main():
             clf = LogisticRegression(C=C, max_iter=1000).fit(Z["train"], y["train"])
         val_acc = float(accuracy_score(y["val"], clf.predict(Z["val"])))
         print(f"  logistic regression C={C:<7g} val acc {val_acc:.3f}")
-        if best is None or val_acc > best[0]:
+        if best is None or val_acc > best[0]: # pylint: disable=unsubscriptable-object
             best = (val_acc, C, clf)
     val_acc, C, clf = best
     lr = {"C": C, "val_acc": val_acc}
