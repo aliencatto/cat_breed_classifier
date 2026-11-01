@@ -1,0 +1,5 @@
+# dataset is downloaded automatically - never commit it
+data/
+
+src/__pycache__/__init__.cpython-313.pyc
+src/__pycache__/data.cpython-313.pyc
