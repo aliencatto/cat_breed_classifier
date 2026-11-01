@@ -67,6 +67,12 @@ python -m src.evaluate --run outputs/cnn_dropout05
 python -m src.evaluate --run outputs/cnn_noaug
 ```
 
+## Try by your own
+Choose your own photo and named as **'cat.jpg'**, to preprocesses an external image (converts RGB, resizes to 128×128, applies mean/std normalization) and runs a forward pass through CatCNN to predicted class labels and top-3 Softmax probability distributions.
+```powershell
+python -m src.predict  --run outputs/cnn --image cat.jpg # try one example photo named as 'cat.jpg'
+```
+
 ## References
 - [Oxford-IIIT Pet](https://www.robots.ox.ac.uk/~vgg/data/pets/) (CC BY-SA 4.0)
 - [Hugging Face mirror timm/oxford-iiit-pet](https://huggingface.co/datasets/timm/oxford-iiit-pet)
