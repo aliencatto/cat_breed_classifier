@@ -11,7 +11,7 @@ regularisation, loss curves, a confusion matrix, one-shot test evaluation and an
  - [x] At least one form of regularization (dropout, weight decay, augmentation, early stopping) — and you can say why.
  - [x] Loss curves + a confusion matrix / metric. Train-vs-val curves you can read, plus a confusion matrix (or per-class metric / generated samples) — not just one accuracy number.
  - [x] A fixed seed so your numbers reproduce.
- - [ ] A short written report (the template below), including one honest failure case.
+ - [x] A short written report (the template below), including one honest failure case.
 
 ## Task & Project Overview
 * Build and train a custom CNN architecture from scratch that perform multi-class image classification on cat breeds while maintaining converging loss curves and closing the validation gap.
