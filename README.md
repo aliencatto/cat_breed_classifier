@@ -27,7 +27,7 @@ python -m src.model
 ```
 
 ## Baselines
-Benchmark performance against simple baseline models and save result [here](baselines.json).
+Benchmark performance against simple baseline models and save result [here](outputs/baselines.json).
 ```powershell
 python -m src.baselines
 ```
